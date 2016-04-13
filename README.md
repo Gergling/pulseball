@@ -1,5 +1,7 @@
 # pulseball
 
+Requires npm and grunt. For these instructions, global grunt is assumed.
+
 To install:
 
     npm install
