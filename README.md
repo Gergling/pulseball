@@ -2,12 +2,12 @@
 
 To install:
 
-  npm install
+    npm install
   
 To generate the index.html file:
 
-  grunt
+    grunt
 
 To run the http server:
 
-  npm start
+    npm start
