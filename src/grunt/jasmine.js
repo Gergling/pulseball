@@ -4,11 +4,13 @@ module.exports = function (grunt) {
     var paths = require('./config').paths;
 
     return {
-        pivotal: {
-            src: paths.js.src,
-            options: {
-                specs: 'src/spec/unit/**/*.js'
-            }
+        options: {
+            helpers: 'node_modules/angular-mocks/angular-mocks.js',
+            specs: 'src/spec/unit/**/*.js',
+            vendor: paths.js.vendor
+        },
+        client: {
+            src: paths.js.src
         }
     };
 };
