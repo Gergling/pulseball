@@ -26,26 +26,12 @@ describe('pulseballFactoryInstantiator', function () {
             instance.init(ranking);
         });
 
-        describe('#_winner(match)', function () {
-            var mockMatch = {
-                teams: [{id: 10}, {id: 20}]
-            };
-            // Check response for A, B, D, N
-            it('returns team 10 for outcome "A"', function () {
-                expect(instance._winner(angular.extend(mockMatch, {outcome: 'A'})).id).toBe(10);
-            });
-            it('returns team 20 for outcome "B"', function () {
-                expect(instance._winner(angular.extend(mockMatch, {outcome: 'B'})).id).toBe(20);
-            });
-            it('returns an exception for outcomes "D" or "N"', function () {
-                ['D', 'N'].forEach(function (outcome) {
-                    expect(function () {
-                        return instance._winner(angular.extend(mockMatch, {outcome: outcome}));
-                    }).toThrow(new Error('Looking for winner in a match which had no winners.'));
-                });
+        describe('#_rankingTeam(id)', function () {
+            it('returns a team when given an id', function () {
+                expect(instance._rankingTeam(1).team.id).toBe(1);
+                expect(instance._rankingTeam(2).team.id).toBe(2);
             });
         });
-
         describe('#addMatch(match)', function () {
             // Put in a match object
             var newRanking;
