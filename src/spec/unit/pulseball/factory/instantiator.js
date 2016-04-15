@@ -78,7 +78,7 @@ describe('pulseballFactoryInstantiator', function () {
             describe('returns the correct ranking', function () {
                 // Check returned object is of type ranking
                 it('overall', function () {
-                    expect(newRanking).toBe(expectedRanking);
+                    expect(newRanking).toEqual(expectedRanking);
                 });
 
                 expectedRanking.forEach(function (rank, idx) {
