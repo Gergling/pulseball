@@ -16,7 +16,12 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
         this.addMatch = function (match) {
             // Choose teams from rankings using match data
             var teamRanks = match.teams.map(function (team, idx) {
-                return rankingTeam(team.id);
+                teamRank = rankingTeam(team.id);
+                // Check whether home team
+                if (match.venue.country === team.name) {
+                    teamRank.pts += 3;
+                }
+                return teamRank;
             });
             var differenceTenth = Math.min(10, Math.max(-10, teamRanks[0].pts - teamRanks[1].pts)) / 10;
             var ratingChange;
@@ -37,6 +42,12 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
                     });
                 break;
             }
+
+            rankings.forEach(function (rank) {
+                if (match.venue.country === rank.team.name) {
+                    rank.pts -= 3;
+                }
+            });
 
             rankings = rankings.sort(function (a, b) {
                 return b.pts - a.pts;
