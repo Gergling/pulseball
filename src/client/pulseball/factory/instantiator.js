@@ -39,12 +39,7 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
             }
 
             rankings = rankings.sort(function (a, b) {
-                //console.log(a.team.id, b.team.id, a.pts, b.pts);
-                return a.pts > b.pts;
-            });
-            
-            rankings.forEach(function (x) {
-                console.log(x.team.id, x.pts);
+                return b.pts - a.pts;
             });
 
             return rankings;
