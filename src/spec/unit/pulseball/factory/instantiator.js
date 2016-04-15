@@ -75,9 +75,22 @@ describe('pulseballFactoryInstantiator', function () {
                 newRanking = instance.addMatch(match);
             });
 
-            it('returns the correct ranking', function () {
+            describe('returns the correct ranking', function () {
                 // Check returned object is of type ranking
-                expect(newRanking).toBe(expectedRanking);
+                it('overall', function () {
+                    expect(newRanking).toBe(expectedRanking);
+                });
+
+                expectedRanking.forEach(function (rank, idx) {
+                    describe('ranking at ' + idx, function () {
+                        it('id is correct', function () {
+                            expect(rank.team.id).toBe(newRanking[idx].team.id);
+                        });
+                        it('pts is correct', function () {
+                            expect(rank.pts).toBe(newRanking[idx].pts);
+                        });
+                    });
+                });
             });
         });
     });
