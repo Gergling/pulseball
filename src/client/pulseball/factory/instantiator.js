@@ -37,13 +37,6 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
                     });
                 break;
             }
-            //console.log(ratingChange, differenceTenth, teamRanks[0].score - teamRanks[1].score);
-            /*teamRanks.forEach(function (teamRank) {
-                rankingTeam(teamRank.team.id).pts = teamRank.pts;
-                console.log(teamRank.team.id);
-                console.log('before', rankingTeam(teamRank.team.id).pts);
-                console.log('after', teamRank.pts);
-            });*/
 
             rankings = rankings.sort(function (a, b) {
                 //console.log(a.team.id, b.team.id, a.pts, b.pts);
