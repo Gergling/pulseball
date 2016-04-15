@@ -13,6 +13,7 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
         this.init = function (rankingsJson) {
             rankings = rankingsJson;
         };
+        this.rankings = function () {return rankings;};
         this.addMatch = function (match) {
             // Choose teams from rankings using match data
             var teamRanks = match.teams.map(function (team, idx) {

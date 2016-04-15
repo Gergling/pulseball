@@ -1,0 +1,10 @@
+<table class="table table-bordered">
+    <tr>
+        <td>Name</td>
+        <td>Points</td>
+    </tr>
+    <tr data-ng-repeat="ranking in pulseballControllerRankings.list()">
+        <td>{{ranking.team.name}}</td>
+        <td>{{ranking.pts}}</td>
+    </tr>
+</table>
