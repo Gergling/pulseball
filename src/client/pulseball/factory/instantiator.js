@@ -23,7 +23,7 @@ angular.module('pulseball').factory('pulseballFactoryInstantiator', function () 
                 }
                 return teamRank;
             });
-            var differenceTenth = Math.min(10, Math.max(-10, teamRanks[0].pts - teamRanks[1].pts)) / 10;
+            var differenceTenth = Math.round(Math.min(10, Math.max(-10, teamRanks[0].pts - teamRanks[1].pts)) * 10) / 100;
             var ratingChange;
             switch (match.outcome) {
                 case 'A':
