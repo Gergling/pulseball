@@ -23,7 +23,7 @@ describe('pulseballFactoryInstantiator', function () {
         ];
 
         beforeEach(function () {
-            instance.init(ranking);
+            instance.init(angular.copy(ranking));
         });
 
         describe('#_rankingTeam(id)', function () {
