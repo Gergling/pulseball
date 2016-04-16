@@ -1,0 +1,42 @@
+<div class="well">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label>Venue</label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{pulseballControllerMatch.model('venue').name || 'Select a venue'}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li data-ng-repeat="country in pulseballControllerMatch.countries()">
+                        <a href data-ng-click="pulseballControllerMatch.model('venue', country)">{{country.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group" data-ng-repeat="team in pulseballControllerMatch.teams">
+            <label>{{team[1]}}</label>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{pulseballControllerMatch.model(team[0]).name || 'Select a team'}}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li data-ng-repeat="country in pulseballControllerMatch.countries()">
+                        <a href data-ng-click="pulseballControllerMatch.model(team[0], country)">{{country.name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <input class="form-control" placeholder="Score">
+        </div>
+        <button type="submit" class="btn btn-default" data-ng-click="pulseballControllerMatch.submit();">Submit</button>
+    </form>
+</div>
