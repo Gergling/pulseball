@@ -27,7 +27,22 @@ angular.module('pulseball').directive('pulseballMatch', function () {
                 }
                 return model;
             };
+
+            this.teams.forEach(function (teamData) {
+                model[teamData[0]] = {};
+            });
             
+            this.exposed = model;
+
+            this.outcomes = function () {
+                return [
+                    ['A', (model.team1.name || 'First team') + ' wins'],
+                    ['B', (model.team2.name || 'Second team') + ' wins'],
+                    ['D', 'Draw'],
+                    ['N', 'No Result']
+                ];
+            };
+
             this.submit = function () {
                 PULSEBALL.addMatch({
                     "venue": {
@@ -37,11 +52,6 @@ angular.module('pulseball').directive('pulseballMatch', function () {
                         model.team1,
                         model.team2
                     ],
-                    "scores": [
-                        19,
-                        23
-                    ],
-                    "status": "C",
                     "outcome": "B"
                 });
             };
