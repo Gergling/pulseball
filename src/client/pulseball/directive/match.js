@@ -34,24 +34,14 @@ angular.module('pulseball').directive('pulseballMatch', function () {
             
             this.exposed = model;
 
-            var outcomes = [];
-
-            $scope.$watch(function () {
-                return model.team1.name + model.team2.name;
-            }, function () {
-                outcomes = [
-                    ['A', (model.team1.name || 'First team') + ' wins'],
-                    ['B', (model.team2.name || 'Second team') + ' wins'],
-                    ['D', 'Draw'],
-                    ['N', 'No Result']
-                ];
-            });
-
-            this.outcomes = function () {
-                return outcomes;
-            };
-
             this.submit = function () {
+                var outcome = "D";
+                if (model.team1.score > model.team2.score) {
+                    outcome = "A";
+                } else if (model.team1.score < model.team2.score) {
+                    outcome = "B";
+                }
+
                 PULSEBALL.addMatch({
                     "venue": {
                         "country": model.venue
@@ -60,7 +50,7 @@ angular.module('pulseball').directive('pulseballMatch', function () {
                         model.team1,
                         model.team2
                     ],
-                    "outcome": "B"
+                    "outcome": outcome
                 });
             };
         }
