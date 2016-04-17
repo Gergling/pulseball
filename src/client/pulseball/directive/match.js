@@ -2,7 +2,7 @@ angular.module('pulseball').directive('pulseballMatch', function () {
     return {
         templateUrl: 'src/client/pulseball/partial/match.html',
         controllerAs: 'pulseballControllerMatch',
-        controller: function () {
+        controller: function ($scope) {
             // Input:
             // Venue country, teams, scores, outcome
             this.countries = function () {
@@ -34,13 +34,21 @@ angular.module('pulseball').directive('pulseballMatch', function () {
             
             this.exposed = model;
 
-            this.outcomes = function () {
-                return [
+            var outcomes = [];
+
+            $scope.$watch(function () {
+                return model.team1.name + model.team2.name;
+            }, function () {
+                outcomes = [
                     ['A', (model.team1.name || 'First team') + ' wins'],
                     ['B', (model.team2.name || 'Second team') + ' wins'],
                     ['D', 'Draw'],
                     ['N', 'No Result']
                 ];
+            });
+
+            this.outcomes = function () {
+                return outcomes;
             };
 
             this.submit = function () {
