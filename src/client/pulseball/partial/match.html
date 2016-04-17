@@ -37,20 +37,6 @@
             </div>
             <input class="form-control" placeholder="Score" data-ng-model="pulseballControllerMatch.exposed[team].score">
         </div>
-        <div class="form-group">
-            <label>Outcome</label>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    {{pulseballControllerMatch.model('outcome')[1] || 'Select an outcome'}}
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li data-ng-repeat="outcome in pulseballControllerMatch.outcomes()">
-                        <a data-ng-click="pulseballControllerMatch.model('outcome', outcome)">{{outcome[1]}}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <button type="submit" class="btn btn-default" data-ng-click="pulseballControllerMatch.submit();">Submit</button>
     </form>
 </div>
