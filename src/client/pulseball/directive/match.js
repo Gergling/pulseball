@@ -34,6 +34,14 @@ angular.module('pulseball').directive('pulseballMatch', function () {
             
             this.exposed = model;
 
+            this.valid = function () {
+                var valid = true;
+                ['venue', 'team1', 'team2'].forEach(function (field) {
+                    if (!model[field]) {valid = false;}
+                });
+                return valid;
+            };
+
             this.submit = function () {
                 var outcome = "D";
                 if (model.team1.score > model.team2.score) {
